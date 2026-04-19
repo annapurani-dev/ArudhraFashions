@@ -1,0 +1,356 @@
+/* Search Modal Overlay - Glassmorphism Background */
+.search-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: searchModalFadeIn 0.2s ease-out;
+}
+
+@keyframes searchModalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Search Modal Container */
+.search-modal {
+  position: relative;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: searchModalSlideIn 0.3s ease-out;
+}
+
+@keyframes searchModalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Search Input Wrapper */
+.search-modal-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.search-modal-icon {
+  color: #666;
+  flex-shrink: 0;
+}
+
+.search-modal-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-family: inherit;
+  color: #333;
+  outline: none;
+}
+
+.search-modal-input::placeholder {
+  color: #999;
+}
+
+.search-modal-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.search-modal-clear:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Results Container */
+.search-modal-results {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+/* Loading State */
+.search-modal-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.search-modal-spinner {
+  animation: searchModalSpin 1s linear infinite;
+  margin-bottom: 16px;
+  color: #c45c26;
+}
+
+@keyframes searchModalSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.search-modal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.search-modal-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.search-modal-empty p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+.search-modal-empty span {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Hint State */
+.search-modal-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.search-modal-hint-icon {
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.search-modal-hint p {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Results Header */
+.search-modal-header {
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.search-modal-header span {
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+}
+
+/* Products Grid */
+.search-modal-products {
+  padding: 8px;
+}
+
+/* Individual Product Card */
+.search-modal-product {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-modal-product:hover {
+  background: rgba(196, 92, 38, 0.06);
+}
+
+.search-modal-product-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-modal-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.search-modal-product-placeholder {
+  font-size: 11px;
+  color: #999;
+}
+
+.search-modal-product-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-modal-product-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-modal-product-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-modal-product-category {
+  font-size: 12px;
+  color: #888;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.search-modal-product-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #c45c26;
+}
+
+/* Close Button */
+.search-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.search-modal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .search-modal-overlay {
+    padding-top: 60px;
+    align-items: flex-start;
+  }
+  
+  .search-modal {
+    width: 95%;
+    max-height: 85vh;
+    border-radius: 12px;
+  }
+  
+  .search-modal-input-wrapper {
+    padding: 14px 16px;
+  }
+  
+  .search-modal-input {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .search-modal-product {
+    padding: 10px;
+    gap: 12px;
+  }
+  
+  .search-modal-product-image {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .search-modal-product-name {
+    font-size: 14px;
+  }
+  
+  .search-modal-product-price {
+    font-size: 13px;
+  }
+}
+
+/* Scrollbar Styling */
+.search-modal-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-modal-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.search-modal-results::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.search-modal-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
